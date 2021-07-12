@@ -1,3 +1,6 @@
+// to get access to stylesheet path
+const path = require('path');
+
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
@@ -7,6 +10,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// to get access to public folder and all with it
+app.use(express.static(path.join(__dirname, 'public')));
 
 // turn on routes
 app.use(routes);
